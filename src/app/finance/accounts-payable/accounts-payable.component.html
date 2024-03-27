@@ -1,0 +1,33 @@
+<ids-layout-grid auto-fit="true" padding="md">
+  <ids-text font-size="12" type="h1">Introduction</ids-text>
+</ids-layout-grid>
+<ids-layout-grid auto-fit="true" gap="md" padding-x="md">
+  <ids-layout-grid-cell>
+    <ids-text type="p">Accounts payable is the money a company owes its vendors, while accounts receivable is the money that is owed to the company, typically by customers. When one company transacts with another on credit, one will record an entry to accounts payable on their books while the other records an entry to accounts receivable.</ids-text>
+  </ids-layout-grid-cell>
+</ids-layout-grid>
+
+
+    <ids-layout-grid cols="2" padding="md">
+      <ids-layout-grid-cell>
+        <ids-checkbox-group label="Configuration">
+          <ids-checkbox value="checkbox1" label="Touchless invoicing" (ngModelChange)="onUpdate($event)" [(ngModel)]="testCheckbox.one"></ids-checkbox>
+          <ids-checkbox value="checkbox2" label="OCR invoice scanning" (ngModelChange)="onUpdate($event)" [(ngModel)]="testCheckbox.two"></ids-checkbox>
+          <ids-checkbox value="checkbox3" label="Automated 2-way & 3-way PO matching" checked="true" (ngModelChange)="onUpdate($event)" [(ngModel)]="testCheckbox.three"></ids-checkbox>
+        </ids-checkbox-group>
+    
+        <!-- <ids-input type="text" label="Financial company name on invoice  ({{testInput}})" (ngModelChange)="onUpdate($event)" [(ngModel)]="testInput"></ids-input>
+  
+        <ids-textarea label="Commentary text" (ngModelChange)="onUpdate($event)" [(ngModel)]="testTextarea"></ids-textarea> -->
+
+        <ids-button id="test-button-default" appearance="primary"><span>Save changes...</span></ids-button>
+      </ids-layout-grid-cell>
+  
+      
+      <ids-layout-grid cols="1" gap="md">
+        <ids-layout-grid-cell>
+          
+        </ids-layout-grid-cell>
+      </ids-layout-grid>
+    </ids-layout-grid>
+  

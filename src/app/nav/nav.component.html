@@ -1,0 +1,96 @@
+
+<ids-module-nav 
+        #moduleNavRef
+        id="module-nav" 
+        displayMode="{{displayMode}}"
+        responsive="{{responsive}}"
+        (displaymodechange)="handleDisplayModeChange($event)"
+        style="top: 40px;">
+    <ids-module-nav-bar 
+      #moduleNavBarRef
+      filterable="{{filterable}}"
+      pinned="{{pinned}}">
+      
+      <ids-search-field id="search" clearable color-variant="module-nav" label="Module Nav Search"
+        label-state="collapsed" no-margins placeholder="Search" size="full" slot="search"></ids-search-field>
+
+      <!-- Main Content (Accordion Navigation) -->
+      <ids-accordion #moduleNavAccordionRef>
+        <ids-accordion-section slot="" grow>
+          <ids-accordion-panel>
+            <ids-module-nav-item id="item-user" slot="header" icon="print">
+              <ids-text font-size="16" overflow="ellipsis">Finance</ids-text>
+            </ids-module-nav-item>
+            <ids-accordion-panel slot="content"><ids-module-nav-item slot="header" [routerLink]="['/finance/general-ledger']">
+              <ids-text font-size="14">General Ledger</ids-text></ids-module-nav-item></ids-accordion-panel>
+            <ids-accordion-panel slot="content"><ids-module-nav-item slot="header" [routerLink]="['/finance/accounts-payable']">
+              <ids-text font-size="14">Accounts Payable</ids-text></ids-module-nav-item></ids-accordion-panel>
+        </ids-accordion-panel>
+
+        <ids-accordion-panel>
+          <ids-module-nav-item id="item-user" slot="header" icon="url">
+            <ids-text font-size="16">User Management</ids-text>
+          </ids-module-nav-item>
+          <ids-accordion-panel slot="content"><ids-module-nav-item slot="header" [routerLink]="['/user/auth']">
+            <ids-text font-size="14">Authentication</ids-text></ids-module-nav-item></ids-accordion-panel>
+          <ids-accordion-panel slot="content"><ids-module-nav-item slot="header" [routerLink]="['/user/users-roles']">
+            <ids-text font-size="14">Users and roles</ids-text></ids-module-nav-item></ids-accordion-panel>
+        </ids-accordion-panel>
+      
+        </ids-accordion-section>
+      </ids-accordion>
+
+      
+
+      <ids-module-nav-settings slot="settings" role="button" icon="settings" id="module-nav-settings-btn"
+        menu="module-nav-settings-menu" color-variant="module-nav" content-align="start" no-margins no-ripple>
+        <ids-text>Settings</ids-text>
+      </ids-module-nav-settings>
+      <ids-popup-menu id="module-nav-settings-menu" target="#module-nav-settings-btn" trigger-type="click"
+        slot="settings">
+        <ids-menu-group>
+          <ids-menu-item icon="observation-precautions" value="jobs">Jobs</ids-menu-item>
+          <ids-menu-item icon="report" value="reports">Reports</ids-menu-item>
+          <ids-menu-item icon="isolation" value="actions">Actions</ids-menu-item>
+          <ids-menu-item icon="edit" value="personalization">Personalization</ids-menu-item>
+          <ids-separator></ids-separator>
+          <ids-menu-item value="create-report">Create Report</ids-menu-item>
+          <ids-menu-item value="proxy">Proxy</ids-menu-item>
+          <ids-menu-item value="set-as-of-date">Set "As Of Date"</ids-menu-item>
+          <ids-menu-item value="user-context">User Context</ids-menu-item>
+          <ids-separator></ids-separator>
+          <ids-menu-item icon="settings" value="settings">Settings</ids-menu-item>
+          <ids-menu-item icon="info" value="about">About</ids-menu-item>
+          <ids-menu-item icon="help" value="help">Help</ids-menu-item>
+        </ids-menu-group>
+      </ids-popup-menu>
+
+    </ids-module-nav-bar>
+
+    <ids-module-nav-content offset-content>
+      <!-- Page Header -->
+      <ids-header>
+        <ids-toolbar>
+          <ids-toolbar-section type="button">
+            <ids-button 
+              #moduleNavTriggerBtnRef
+              id="module-nav-trigger"
+              icon="menu" 
+              (click)="handleHamburgerButtonClick()">
+              <span class="audible">Open Navigation</span>
+            </ids-button>
+          </ids-toolbar-section>
+          <ids-toolbar-section type="title">
+            <ids-text font-size="20" type="h1">{{ mainTitle }}</ids-text>
+          </ids-toolbar-section>
+          <ids-toolbar-section align="end" type="button">
+            <ids-theme-switcher mode="light"></ids-theme-switcher>
+          </ids-toolbar-section>
+        </ids-toolbar>
+      </ids-header>
+
+      <!-- Page Body -->
+      <router-outlet></router-outlet>
+      
+    </ids-module-nav-content>
+  </ids-module-nav>
